@@ -1,0 +1,67 @@
+/* App.css */
+
+/* General Styles */
+
+
+/* Header Styles */
+.header {
+  background-color: #000000;
+  color: #fefefe;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  z-index: 100;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+
+
+/* Footer Styles */
+.footer {
+  background-color: #000000;
+  color: #bc1191;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: #ff01bf 100px 20px 20px ;
+}
+
+
+/* Footer Content Styles */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Social Icons Styles */
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icon {
+  color: #bc1111;
+  font-size: 24px;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  color: #ff0a0a;
+}
+.body {
+  background-color: #000000;
+  color: #fefefe;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  z-index: 100;
+}

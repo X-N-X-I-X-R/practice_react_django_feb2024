@@ -1,0 +1,97 @@
+{
+  "meat": [
+    {
+      "id": "1",
+      "name": "Beef",
+      "price": 8.99,
+      "quantity": 10
+    },
+    {
+      "id": "2",
+      "name": "Chicken",
+      "price": 5.99,
+      "quantity": 15
+    },
+    {
+      "id": "3",
+      "name": "Pork",
+      "price": 6.99,
+      "quantity": 12
+    },
+    {
+      "id": "4",
+      "name": "Lamb",
+      "price": 9.99,
+      "quantity": 8
+    },
+    {
+      "id": "5",
+      "name": "Turkey",
+      "price": 7.99,
+      "quantity": 10
+    },
+    {
+      "id": "8432",
+      "prodname": "nir",
+      "price": "2",
+      "quantity": "4",
+      "category": "meat"
+    },
+    {
+      "id": "b0b6",
+      "prodname": "dor",
+      "price": "2",
+      "quantity": "4",
+      "category": "meat"
+    }
+  ],
+  "dairy": [
+    {
+      "id": "6",
+      "name": "Milk",
+      "price": 2.49,
+      "quantity": 20
+    },
+    {
+      "id": "7",
+      "name": "Cheese",
+      "price": 4.99,
+      "quantity": 18
+    },
+    {
+      "id": "8",
+      "name": "Yogurt",
+      "price": 3.99,
+      "quantity": 15
+    },
+    {
+      "id": "9",
+      "name": "Butter",
+      "price": 5.49,
+      "quantity": 10
+    },
+    
+    {
+      "id": "10",
+      "name": "Eggs",
+      "price": 2.99,
+      "quantity": 24
+    },
+    {
+      "id": "df4d",
+      "prodname": "dor",
+      "price": "2",
+      "quantity": "4",
+      "category": "dairy"
+    }
+  ],
+  "user": [
+    {
+      "id": "1",
+      "name": "John",
+      "email": "j@gmail.com",
+      "password": 123,
+      "tel": 1234567890
+    }
+  ]
+}
