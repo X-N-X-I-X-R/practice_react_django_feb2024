@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -21,6 +22,12 @@ const Login = () => {
         username,
         password,
       });
+
+      const accessToken = response.data.access;
+      const decodedAccessToken = jwtDecode(accessToken);
+
+      // Access the information in the decoded token
+      console.log('Decoded Access Token:', decodedAccessToken);
 
       // Handle successful login, you may redirect the user or perform other actions
       console.log('Login successful:', response.data);
@@ -51,7 +58,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-

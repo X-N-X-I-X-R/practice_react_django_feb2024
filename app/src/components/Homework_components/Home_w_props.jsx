@@ -1,9 +1,9 @@
 // Home_w_props.js
 import React, { useState } from 'react';
 import Home_w from './Home_w';
-import Home_w_two from './Home_w_two';
 import Home_w_three from './Home_w_three';
 import Home_w_four from './Home_w_four';
+import Home_w_two from './Home_w_two';
 
 const Home_w_props = () => {
   const [changecolor, setChangecolor] = useState("");

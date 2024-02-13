@@ -1,1 +1,7 @@
-# practice_react_django_feb2024
+npx json-server --watch db.json
+npm start 
+python3 manage.py runserver
+
+
+pip freeze > requirements.txt
+pip install -r requirements.txt

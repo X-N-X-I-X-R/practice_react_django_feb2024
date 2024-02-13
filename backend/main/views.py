@@ -1,18 +1,19 @@
 from django.contrib.auth.models import User
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework import serializers, status
 from rest_framework.response import Response
-from .models.user_model import Customers
-import os 
-
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+import os
 
+from .models.user_model import Customers  # Move this import statement up
 
 def clear_terminal():
     os.system('clear')
 clear_terminal()
 
-
+# get token with username and email 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -24,26 +25,45 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+# register user  
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    first_name = serializers.CharField()
+    last_name = serializers.CharField()
 
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password', 'first_name', 'last_name')
 
+    def validate(self, data):
+        if not all(data.get(field) for field in ['username', 'email', 'password', 'first_name', 'last_name']):
+            raise serializers.ValidationError("All fields are required.")
+        return data
 
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user
 
-from rest_framework import serializers
+@api_view(['POST'])
+def register_user(request):
+    if request.method == 'POST':
+        serializer = UserRegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Serializers Customers 
 class CustomersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customers
-        fields = '__all__'  
-        
-
-
-from rest_framework import status
-from .models.user_model import Customers
+        fields = '__all__'
 
 @api_view(['GET', 'POST'])
+# @permission_classes([IsAuthenticated])
 def customers_list(request):
     if request.method == 'GET':
+        print(request.user)
         customers = Customers.objects.all()
         serializer = CustomersSerializer(customers, many=True)
         return Response(serializer.data)
@@ -56,6 +76,7 @@ def customers_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+# @permission_classes([IsAuthenticated, IsAdminUser])
 def customer_detail(request, customer_id):
     try:
         customer = Customers.objects.get(customer_id=customer_id)
@@ -76,16 +97,3 @@ def customer_detail(request, customer_id):
     elif request.method == 'DELETE':
         customer.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-        
-        
-if __name__ == '__main__':
-    pass
-    
-
-  
-
-
-
-

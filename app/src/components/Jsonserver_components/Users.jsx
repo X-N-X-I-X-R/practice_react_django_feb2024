@@ -11,7 +11,7 @@ const Users = () => {
                 
                 );
                 setUsers(response.data);
-                console.log("users", response.data);
+                console.log("users from json server is here !! ", response.data);
             } catch (error) {
                 console.error('Error fetching users:', error);
             }

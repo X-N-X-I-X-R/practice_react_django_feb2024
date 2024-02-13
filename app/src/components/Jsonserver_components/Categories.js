@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import MyContext from '../Usecontext_components/MyContext';
 
 const Categories = () => {
     console.log('Categories component');
     const [meat, setMeat] = useState([]);
     const [dairy, setDairy] = useState([]);
-    
     const [selectedCategory, setSelectedCategory] = useState(null);
+
 
     useEffect(() => {
         console.log('Categories useEffect');
@@ -43,7 +44,7 @@ const Categories = () => {
                 <p className="card-text">ID: {item.id}</p>
             </div>
             <div className="card-footer">
-                <button className="btn btn-success" onClick={() => alert('You clicked on ' + item.name)}>Click me</button>
+                <button className="btn btn-success" onClick={() => console.log('You clicked on ' + item.name)}>Add to Cart </button>
             </div>
         </div>
     ))}
@@ -59,6 +60,9 @@ const Categories = () => {
             <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">ID: {item.id}</p>
+            </div>
+            <div className="card-footer">
+                <button className="btn btn-success" onClick={() => console.log('You clicked on ' + item.name)}>Add to Cart </button>
             </div>
         </div>
     ))}

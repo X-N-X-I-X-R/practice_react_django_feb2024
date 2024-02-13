@@ -4,22 +4,28 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Calc from './components/Calc';
-import B from './components/B';
-import ChangeColorInput from './components/Change_color_input';
-import Home_w_props from './components/Home_w_props';
+import B from './components/usestate_components/B';
+import ChangeColorInput from './components/usestate_components/Change_color_input';
+import Home_w_props from './components/Homework_components/Home_w_props';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Categories from './components/Categories';
-import Crud_cat from './components/Crud_cat';
-import Customers from './django_components/Customers';
-import AddCustomer from './django_components/AddCustomer';
-import Login from './django_components/Login';
+import Categories from './components/Jsonserver_components/Categories';
+import Crud_cat from './components/Jsonserver_components/Crud_cat';
+import Customers from './components/django_components/Customers';
+import AddCustomer from './components/django_components/AddCustomer';
+import Login from './components/django_components/Login';
+import RegisterUser from './components/django_components/RegisterUser';
+import Developer_Tools from './components/django_components/Developer_Tools';
+import Calc from './components/usestate_components/Calc';
+import Products from './components/Without_Server_components/Products';
+import Cart from './components/Without_Server_components/Cart';
 
 const Index = () => {
   const [chang, setChang] = useState('');
 
   return (
+    
+    <div style={{backgroundColor:"rebeccapurple"}}>
     <Router>
       <Routes>
         <Route path='/' element={<App/>}>
@@ -33,11 +39,18 @@ const Index = () => {
           <Route path="/Customers" element={<Customers/>} />
           <Route path="/AddCustomer" element={<AddCustomer />} /> ;
           <Route path="/Login" element={<Login />} />
+          <Route path='/register' element={<RegisterUser />} />
+          <Route path='/Developer_Tools' element=  {<Developer_Tools/>} />
+          <Route path='/Products' element={<Products />} />
+          <Route path='/Cart' element={<Cart />} /> 
 
+
+          
 
         </Route>
       </Routes>
     </Router>
+    </div>
   );
 };
 
